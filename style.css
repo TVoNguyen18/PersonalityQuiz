@@ -1,9 +1,8 @@
 body {
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  text-align: center;
   color: #800080;
 }
 
-h2 {
-  border-style: dotted;
+h1 {
+  text-align: center;
 }
