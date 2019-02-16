@@ -10,24 +10,48 @@ function processResults() {
   let personalityResult = getPersonality();
   console.log(personalityResult);
 
-  resultArea.innerHTML = "You are " + personalityResult;
+  resultArea.innerHTML = personalityResult + " compatible as friends.";
 
   function getPersonality() {
     let aAnswer = document.querySelector('input[name="anime"]:checked');
-    aAnswer = aAnswer.id;
+    let aAnswer2 = aAnswer.id;
     let rAnswer = document.querySelector('input[name="reading"]:checked');
-    rAnswer = rAnswer.id;
+    let rAnswer2 = rAnswer.id;
     let mAnswer = document.querySelector('input[name="music"]:checked');
-    mAnswer = mAnswer.id;
+    let mAnswer2 = mAnswer.id;
     let cAnswer = document.querySelector('input[name="class"]:checked');
-    cAnswer = cAnswer.id;
+    let cAnswer2 = cAnswer.id;
     let tAnswer = document.querySelector('input[name="time"]:checked');
-    tAnswer = tAnswer.id;
+    let tAnswer2 = tAnswer.id;
+
+    let totalPoints = 0;
+    let returnValue;
+
+    totalPoints = animeObject[aAnswer2] + readingObject[rAnswer2] +
+        musicObject[mAnswer2] + classObject[cAnswer2] + timeObject[tAnswer2];
+
+    aAnswer.checked = false;
+    rAnswer.checked = false;
+    mAnswer.checked = false;
+    cAnswer.checked = false;
+    tAnswer.checked = false;
+
+    if (totalPoints <= 8) {
+      returnValue = "No, we are not";
+    } else if (totalPoints <= 12) {
+      returnValue = "MAYBE we are";
+    } else if (totalPoints < 16) {
+      returnValue = "Sure, we are";
+    } else {
+      returnValue = "YES, we are";
+    }
+
+    return returnValue;
   }
 }
 
 function resetQuiz() {
-
+  resultArea.innerHTML = "";
 }
 
 let animeObject = {
