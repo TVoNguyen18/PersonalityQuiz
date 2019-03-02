@@ -23,18 +23,22 @@ function processResults() {
     let cAnswer2 = cAnswer.id;
     let tAnswer = document.querySelector('input[name="time"]:checked');
     let tAnswer2 = tAnswer.id;
+    let toAnswer = document.querySelector('input[name="tofu"]:checked');
+    let toAnswer2 = toAnswer.id;
 
     let totalPoints = 0;
     let returnValue;
 
     totalPoints = animeObject[aAnswer2] + readingObject[rAnswer2] +
-        musicObject[mAnswer2] + classObject[cAnswer2] + timeObject[tAnswer2];
+        musicObject[mAnswer2] + classObject[cAnswer2] + timeObject[tAnswer2]
+        + tofuObject[toAnswer2];
 
     aAnswer.checked = false;
     rAnswer.checked = false;
     mAnswer.checked = false;
     cAnswer.checked = false;
     tAnswer.checked = false;
+    toAnswer.checked = false;
 
     if (totalPoints <= 8) {
       returnValue = "No, we are not";
@@ -87,4 +91,11 @@ let timeObject = {
   q5c2: 4,
   q5c3: 1,
   q5c4: 3
+}
+
+let tofuObject = {
+  q6c1: 4,
+  q6c2: 2,
+  q6c3: 1,
+  q6c4: 3
 }
