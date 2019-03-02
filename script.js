@@ -1,6 +1,8 @@
 let submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", processResults);
 
+let divContainer = document.getElementById("hidelater");
+
 let resetButton = document.getElementById("reset");
 resetButton.addEventListener("click", resetQuiz);
 
@@ -8,6 +10,7 @@ let resultArea = document.getElementById("result");
 
 function processResults() {
   let personalityResult = getPersonality();
+  divContainer.style.visibility = "hidden";
   console.log(personalityResult);
 
   resultArea.innerHTML = personalityResult + " compatible as friends.";
@@ -15,16 +18,22 @@ function processResults() {
   function getPersonality() {
     let aAnswer = document.querySelector('input[name="anime"]:checked');
     let aAnswer2 = aAnswer.id;
+    console.log(aAnswer2);
     let rAnswer = document.querySelector('input[name="reading"]:checked');
     let rAnswer2 = rAnswer.id;
+    console.log(rAnswer2);
     let mAnswer = document.querySelector('input[name="music"]:checked');
     let mAnswer2 = mAnswer.id;
+    console.log(mAnswer2);
     let cAnswer = document.querySelector('input[name="class"]:checked');
     let cAnswer2 = cAnswer.id;
+    console.log(cAnswer2);
     let tAnswer = document.querySelector('input[name="time"]:checked');
     let tAnswer2 = tAnswer.id;
+    console.log(tAnswer2);
     let toAnswer = document.querySelector('input[name="tofu"]:checked');
     let toAnswer2 = toAnswer.id;
+    console.log(toAnswer2);
 
     let totalPoints = 0;
     let returnValue;
@@ -40,11 +49,11 @@ function processResults() {
     tAnswer.checked = false;
     toAnswer.checked = false;
 
-    if (totalPoints <= 8) {
+    if (totalPoints <= 12) {
       returnValue = "No, we are not";
-    } else if (totalPoints <= 12) {
+    } else if (totalPoints <= 16) {
       returnValue = "MAYBE we are";
-    } else if (totalPoints < 16) {
+    } else if (totalPoints < 20) {
       returnValue = "Sure, we are";
     } else {
       returnValue = "YES, we are";
@@ -56,6 +65,7 @@ function processResults() {
 
 function resetQuiz() {
   resultArea.innerHTML = "";
+  divContainer.style.visibility = "visible";
 }
 
 let animeObject = {
